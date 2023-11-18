@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/weather_report.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,7 +6,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,46 +21,91 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         color: const Color(0xFF5D50FE),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 100),
-                child: Image.asset("assets/images/anh_widget.png"),
+              Positioned(
+                bottom: 150,
+                left: 0,
+                right: 0,
+                child: Column(
+                  children: <Widget>[
+                    Image.asset("assets/images/trang.png"),
+                  ],
+                ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const WeatherReport(),
-                    ),
-                  );
-                },
-                child: Container(
-                  width: 241,
-                  height: 59,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: const Color(0xFFFFFFFF),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 414,
+                    height: 240,
+                    color: Color(0xFF5C2AFF),
                   ),
-                  child: Center(
+                ],
+              ),
+              Positioned(
+                bottom: 220,
+                right: 12,
+                child: Column(
+                  children: <Widget>[Image.asset("assets/images/nen_mo.png")],
+                ),
+              ),
+              Positioned(
+                bottom: 220,
+                right: 12,
+                child: Column(
+                  children: <Widget>[Image.asset("assets/images/nen_giua.png")],
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  width: 180,
+                  height: 59,
+                  margin: const EdgeInsets.all(70),
+                  decoration: BoxDecoration(
+                      color: Color(0xFFFFFFFF),
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Align(
+                    alignment: Alignment.center,
                     child: const Text(
                       "EXPLORE",
                       style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
                 ),
-              )
+              ),
+              Positioned(
+                top: 230,
+                left: 0,
+                right: 50,
+                child: Column(
+                  children: <Widget>[
+                    Image.asset("assets/images/sun.png"),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: 240,
+                left: 0,
+                right: 0,
+                child: Column(
+                  children: <Widget>[
+                    Image.asset("assets/images/cloud.png"),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
