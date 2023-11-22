@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/weather_plus.dart';
+import 'package:weather_app/weather_temperature.dart';
 
 void main() {
   runApp(const MyApp());
@@ -67,20 +69,29 @@ class MyHomePage extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: Container(
-                  width: 180,
-                  height: 59,
-                  margin: const EdgeInsets.all(70),
-                  decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF),
-                      borderRadius: BorderRadius.circular(50)),
-                  child: const Align(
-                    alignment: Alignment.center,
-                    child:  Text(
-                      "EXPLORE",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
+                child: InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const weather_temperature(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 180,
+                    height: 59,
+                    margin: const EdgeInsets.all(70),
+                    decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child:  Text(
+                        "EXPLORE",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
