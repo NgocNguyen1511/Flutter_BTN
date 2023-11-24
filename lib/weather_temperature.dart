@@ -10,7 +10,6 @@ class weather_temperature extends StatefulWidget {
 }
 
 class _weather_temperatureState extends State<weather_temperature> {
-  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,50 +57,26 @@ class _weather_temperatureState extends State<weather_temperature> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                    });
-                  },
-                  child: Text(
-                    "Today",
-                    style: TextStyle(
-                      color: isExpanded ? Color(0xFF5D50FE) : Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                    ),
+                Text(
+                  "Today",
+                  style: TextStyle(
+                    color: Color(0xFF5D50FE),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(width: 30,),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                    });
-                  },
-                  child: Text(
-                    "Tomorrow",
-                    style: TextStyle(
-                      color: isExpanded ? Colors.black : Color(0xFF5D50FE),
-                      fontWeight: FontWeight.w700,
-                    ),
+                Text(
+                  "Tomorrow",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(width: 30,),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const weather_plus(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "Next Week",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                    ),
+                const Text(
+                  "Next Week",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
@@ -109,22 +84,21 @@ class _weather_temperatureState extends State<weather_temperature> {
             SizedBox(height: 40,),
             Stack(
               children: <Widget>[
-                if (isExpanded)
-                  Container(
-                    width: 360,
-                    height: 300,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF5D50FE),
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                  )
-                else
-                  Container(
-                    width: 360,
-                    height: 300,
-                    decoration: BoxDecoration(
-                      color: Colors.green, // Thay đổi màu sắc của WidgetB
-                      borderRadius: BorderRadius.circular(50),
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const weather_plus(),
+                          ),
+                      );
+                    },
+                    child: Container(
+                      width: 360,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF5D50FE),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
                     ),
                   ),
                 Positioned(
