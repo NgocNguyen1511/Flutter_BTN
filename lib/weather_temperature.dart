@@ -10,7 +10,6 @@ class weather_temperature extends StatefulWidget {
 }
 
 class _weather_temperatureState extends State<weather_temperature> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +52,9 @@ class _weather_temperatureState extends State<weather_temperature> {
                 ),
               ],
             ),
-            SizedBox(height: 25,),
+            SizedBox(
+              height: 25,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -65,42 +66,30 @@ class _weather_temperatureState extends State<weather_temperature> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(width: 30,),
-                Text(
-                  "Tomorrow",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                SizedBox(width: 30,),
-                const Text(
-                  "Next Week",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
               ],
             ),
-            SizedBox(height: 40,),
+            SizedBox(
+              height: 40,
+            ),
             Stack(
               children: <Widget>[
-                  InkWell(
-                    onTap: (){
-                      Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const weather_plus(),
-                          ),
-                      );
-                    },
-                    child: Container(
-                      width: 360,
-                      height: 300,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF5D50FE),
-                        borderRadius: BorderRadius.circular(50),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const weather_plus(),
                       ),
+                    );
+                  },
+                  child: Container(
+                    width: 360,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF5D50FE),
+                      borderRadius: BorderRadius.circular(50),
                     ),
                   ),
+                ),
                 Positioned(
                   top: 176,
                   left: 230,
@@ -113,6 +102,18 @@ class _weather_temperatureState extends State<weather_temperature> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+              alignment: Alignment.topCenter,
+              child: const Text(
+                "Next 12 days",
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            hourlyList(),
           ],
         ),
       ),
@@ -120,21 +121,23 @@ class _weather_temperatureState extends State<weather_temperature> {
   }
 }
 
-class WeatherPlus extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-      child: Center(
-        child: Text(
-          "Weather Plus",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
+Widget hourlyList() {
+  return Container(
+    height: 160,
+    padding: const EdgeInsets.only(top: 10, bottom: 10),
+    child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 12,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 60,
+            height: 80,
+            margin: const EdgeInsets.only(left: 20, right: 5),
+            color: Colors.red,
+            child: Text(
+              "Days"
+            ),
+          );
+        }),
+  );
 }

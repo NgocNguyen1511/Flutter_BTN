@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/weather_expanded.dart';
+import 'package:weather_app/weather_plus.dart';
 import 'package:weather_app/weather_temperature.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
-
-import 'models/entities/info_weather_entity.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -26,52 +22,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-
-
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-}
-
-
-
-
-
-
-
-void getDataWeather() async {
-  var url = Uri.parse(
-      'https://api.openweathermap.org/data/2.5/weather?q=HaNoi&units=metric&appid=82d78aef7a2755507e23056a5b7b885f');
-
-  var response = await http.get(url);
-  if (response.statusCode == 200) {
-    var jsonResponse =
-    convert.jsonDecode(response.body) as Map<String, dynamic>;
-    var itemCount = jsonResponse['totalItems'];
-    final result = InfoWeatherEntity.fromJson(jsonResponse);
-    print('Ten TP: ${result}.');
-  } else {
-    print('Request failed with status: ${response.statusCode}.');
-  }
-}
-
-class main1 extends StatelessWidget {
-  const main1({Key? key}) : super(key: key);
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -170,6 +122,7 @@ class main1 extends StatelessWidget {
           ),
         ),
       ),
+
     );
   }
 }
