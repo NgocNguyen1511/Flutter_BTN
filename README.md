@@ -1,4 +1,4 @@
-# weather_lastest
+# weather_app
 
 A new Flutter project.
 
