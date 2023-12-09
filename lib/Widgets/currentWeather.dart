@@ -14,7 +14,6 @@ class CurrentWeather extends StatefulWidget {
 class _CurrentWeatherState extends State<CurrentWeather> {
   InfoWeatherEntity? infoWeatherEntity;
 
-
   @override
   void initState() {
     super.initState();
